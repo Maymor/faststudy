@@ -1,0 +1,12 @@
+{
+    "name": "dmitry/faststudy",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dmitry\\Faststudy\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
