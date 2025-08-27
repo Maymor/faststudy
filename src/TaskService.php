@@ -35,7 +35,7 @@ class TaskService
             return 1;
         }
 
-        $ids = array_column($tasks, 'id');
+        $ids = array_column($tasks, 'taskId');
 
         return max($ids) + 1;
     }

@@ -1,20 +1,17 @@
 <?php
 
-use Dmitry\Faststudy\Task;
 use Dmitry\Faststudy\TaskService;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-/*$task_service = new TaskService();
+$task_service = new TaskService();
 
-$task = new Task(
-        'Test task',
-        1
-);*/
+$tasks = $task_service->getAllTasks();
 
-// $task_service->saveTask($task);
-
-//var_dump($task_service->getAllTasks());
+if ($_POST['taskName'] ?? false) {
+   $task = $task_service->createTask($_POST['taskName']);
+   $task_service->saveTask($task);
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,33 +22,24 @@ $task = new Task(
     <link rel="stylesheet" src="style.css">
 </head>
 <body>
+
+
 <h1>Список задач</h1>
-<form id="taskForm">
-    <input type="text" id="taskInput" placeholder="Введите задачу">
+<form id="taskForm" method="post" action="/">
+    <input type="text" name="taskName" id="taskInput" placeholder="Введите задачу">
     <button type="submit">Добавить</button>
 </form>
-<ul id="taskList">
-
+<?php if (!empty($tasks)):?>
+<ul>
+    <?php foreach ($tasks as $task): ?>
+    <li>
+        <?= $task['taskName'] ?>
+    </li>
+    <?php endforeach; ?>
 </ul>
-<script>
-    const form = document.getElementById('taskForm');
-    const input = document.getElementById('taskInput');
-    const list = document.getElementById('taskList');
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // отменяем перезагрузку
-
-        const taskText = input.value.trim();
-        if (taskText.length === 0) {
-            return;
-        } // не добавляем пустое
-
-        const li = document.createElement('li');
-        li.textContent = taskText;
-        list.appendChild(li);
-
-        input.value = '';
-    });
-</script>
+<?php else: ?>
+<p>Задач ещё нет</p>
+<?php endif;?>
 </body>
 </html>
