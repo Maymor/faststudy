@@ -1,19 +1,13 @@
 [
     {
         "taskId": 1,
-        "taskName": "ksdlk;sdf",
+        "taskName": "задача 1",
         "taskStatus": "open",
         "taskIsDone": false
     },
     {
         "taskId": 2,
-        "taskName": "ksdlk;sdf",
-        "taskStatus": "open",
-        "taskIsDone": false
-    },
-    {
-        "taskId": 3,
-        "taskName": "задача 1",
+        "taskName": "задача 2",
         "taskStatus": "open",
         "taskIsDone": false
     }
